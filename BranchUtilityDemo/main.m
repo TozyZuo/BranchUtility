@@ -2,8 +2,7 @@
 //  main.m
 //  BranchUtility
 //
-//  Created by TozyZuo on 16/5/13.
-//  Copyright © 2016年 TozyZuo. All rights reserved.
+//  Created by TozyZuo.
 //
 
 #import <Foundation/Foundation.h>
@@ -44,9 +43,9 @@ int TestIntReturn(NSString *str)
     return [BU.if_(^(NSString *object) {
         return [str isEqualToString:object];
     }).table(@{
-                      @"A": @1,
-                      @"B": @2,
-                      @"C": @3,
+               @"A": @1,
+               @"B": @2,
+               @"C": @3,
     }).match(^(id object) {
         return object;
     }).default_(^() {
@@ -58,7 +57,7 @@ void TestIF()
 {
     __block NSString *a = @"non";
 
-    int random = arc4random_uniform(5);
+    int random = arc4random_uniform(6);
 
     if (random == 0) {
         a = @"a";
@@ -70,11 +69,22 @@ void TestIF()
         a = @"d";
     } else if (random == 4) {
         a = @"e";
+    } else {
+        a = @"Not found";
     }
 
-    a = @"non";
-
-//    random = 5;
+    BU.switch_(@(random))
+    .table(@{
+             @0: @"a",
+             @1: @"b",
+             @2: @"c",
+             @3: @"d",
+             @4: @"e",
+    }).match(^(NSString *object) {
+        a = object;
+    }).default_(^() {
+        a = @"Not found";
+    });
 
     BU.if_(^(NSNumber *number) {
         return (BOOL)(random == [number intValue]);
@@ -111,9 +121,9 @@ void TestSwitch()
 
     BU.switch_(@"D")
     .table(@{
-                 @"A": @1,
-                 @"B": @2,
-                 @"C": @3,
+             @"A": @1,
+             @"B": @2,
+             @"C": @3,
     }).match(^(NSNumber *num) {
         a = num.intValue;
     }).default_(^() {

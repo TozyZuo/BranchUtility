@@ -1,9 +1,7 @@
 //
-//  TZBranch.m
-//  BranchUtility
+//  BranchUtility.m
 //
-//  Created by TozyZuo on 16/5/13.
-//  Copyright © 2016年 TozyZuo. All rights reserved.
+//  Created by TozyZuo.
 //
 
 #import "BranchUtility.h"
@@ -15,7 +13,7 @@ id pmk_safely_call_block(id block, id arg);
 
 @interface BUCondition ()
 @property (nonatomic, copy) BOOL (^conditionBlock)(id);
-@property (nonatomic, copy) NSString *object;
+@property (nonatomic, copy) id<NSCopying> object;
 @end
 
 @interface BUTable ()
@@ -42,10 +40,10 @@ id pmk_safely_call_block(id block, id arg);
     };
 }
 
-+ (BUCondition *(^)(NSString *))switch_
++ (BUCondition *(^)(id<NSCopying>))switch_
 {
     BUCondition *condition = [[BUCondition alloc] init];
-    return ^(NSString *object) {
+    return ^(id<NSCopying> object) {
         condition.object = object;
         return condition;
     };
@@ -57,7 +55,7 @@ id pmk_safely_call_block(id block, id arg);
 
 - (void)dealloc
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+//    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (BUTable *(^)(NSDictionary *))table
@@ -82,7 +80,7 @@ id pmk_safely_call_block(id block, id arg);
 
 - (void)dealloc
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+//    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (BUMatchResult *(^)(id block))match
@@ -137,7 +135,7 @@ id pmk_safely_call_block(id block, id arg);
 
 - (void)dealloc
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+//    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (BUMatchResult *(^)(id defaultBlock))default_
