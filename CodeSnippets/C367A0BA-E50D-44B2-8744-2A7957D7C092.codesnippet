@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>BUSwitchNeedReturnValue</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>[BU.switch_(&lt;#object#&gt;)
+ .table(@{
+          &lt;#key#&gt;:&lt;#value#&gt;
+          })
+ .match(^(&lt;#type#&gt; *object) {
+    &lt;#code#&gt;
+    return &lt;#object#&gt;;
+})
+ .default_(^() {
+    &lt;#code#&gt;
+    return &lt;#object#&gt;;
+}).value &lt;#valueType#&gt;];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C367A0BA-E50D-44B2-8744-2A7957D7C092</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>BUSwitch(need return value)</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
