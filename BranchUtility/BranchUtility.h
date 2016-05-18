@@ -10,7 +10,7 @@
 
  INTRODUCTION:
 
- Instead of large numbers of "if ... else if ..."
+ A way to replace large numbers of "if ... else if ..."
 
  USAGE:
  
