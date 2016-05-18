@@ -92,13 +92,17 @@ id pmk_safely_call_block(id block, id arg);
     return ^(id matchBlock) {
 
         BOOL (^conditionBlock)(id) = weakSelf.condition;
-        NSDictionary *table = weakSelf.table;
 
-        for (id key in table) {
-            if (conditionBlock(key)) {
-                matchResult.value = pmk_safely_call_block(matchBlock, table[key]);
-                matchResult.match = YES;
-                break;
+        if (conditionBlock) {
+
+            NSDictionary *table = weakSelf.table;
+
+            for (id key in table) {
+                if (conditionBlock(key)) {
+                    matchResult.value = pmk_safely_call_block(matchBlock, table[key]);
+                    matchResult.match = YES;
+                    break;
+                }
             }
         }
 
@@ -157,7 +161,11 @@ id pmk_safely_call_block(id block, id arg);
 
 #pragma mark - From PromiseKit
 
-id pmk_safely_call_block(id block, id arg) {
+id pmk_safely_call_block(id block, id arg)
+{
+    if (!block) {
+        return nil;
+    }
 
     @try {
         NSMethodSignature *sig = NSMethodSignatureForBlock(block);
