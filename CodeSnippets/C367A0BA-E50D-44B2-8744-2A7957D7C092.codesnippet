@@ -11,7 +11,7 @@
 	<key>IDECodeSnippetContents</key>
 	<string>[BU.switch_(&lt;#object#&gt;)
  .table(@{
-          &lt;#key#&gt;:&lt;#value#&gt;
+          &lt;#key#&gt;: &lt;#value#&gt;
           })
  .match(^(&lt;#type#&gt; *object) {
     &lt;#code#&gt;
