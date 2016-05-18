@@ -126,3 +126,7 @@
     }
 
   Note: "str" is the key of the table, "object" is the value of the table. Last ".value" is the return value of the "match/default" block.
+
+# CodeSnippets
+
+Path: ~/Library/Developer/Xcode/UserData/CodeSnippets
